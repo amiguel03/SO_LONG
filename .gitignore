@@ -1,4 +1,5 @@
+objs/
 *.o
-.vscode
+.vscode/
 .DS_Store
 so_long
