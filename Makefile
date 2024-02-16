@@ -6,7 +6,7 @@
 #    By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:25:56 by amiguel-          #+#    #+#              #
-#    Updated: 2024/02/13 10:42:59 by amiguel-         ###   ########.fr        #
+#    Updated: 2024/02/14 12:07:32 by amiguel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ FRAMEWORKS		= -framework OpenGL -framework AppKit
 
 # SOURCE FILES
 SRC_DIR			=	src/
-SRC_FILES		= 	main.c
+SRC_FILES		= 	main.c	\
+					init.c
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 # OBJECT FILES
@@ -78,3 +79,9 @@ fclean: clean
 re: fclean all
 
 .PHONY:		all clean fclean re
+
+###########################################################################################
+
+r: run
+run: all
+	./$(NAME)
