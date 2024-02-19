@@ -82,6 +82,7 @@ typedef struct	s_controler {
 }				t_controler;
 
 /* ****** Defino funciones ****** */
+
 t_controler *init_data(char *map_name);
 t_map		*get_map(char *filename);
 void		*delete_map(t_map *map);
