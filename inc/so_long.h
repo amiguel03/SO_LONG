@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/14 15:39:24 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:54:00 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include "../libft/libft.h"
 
 /* ****** Defino las keycode ****** */
@@ -36,6 +37,7 @@
 # define BACK_SPT	2
 # define WALL_SPT	3
 # define OUTD_SPT	4
+# define MAP_CH		"01CEPM"
 
 # define ARGUMENTS_ERROR_MSG	"Error de argumentos!\n"
 # define ERROR_INIT_MSG			"Error creando la info del juego!\n"
@@ -80,5 +82,12 @@ typedef struct	s_controler {
 }				t_controler;
 
 t_controler *init_data(char *map_name);
+t_map		*get_map(char *filename);
+void		*delete_map(t_map *map);
+t_map		*check_map(t_map *map);
+int			set_points(t_map *map);
+int			count_consum(t_map *map);
+int			detect_path(t_map *map);
+int			map_locked(t_map *map);
 
 #endif

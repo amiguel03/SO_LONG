@@ -6,7 +6,7 @@
 #    By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:25:56 by amiguel-          #+#    #+#              #
-#    Updated: 2024/02/14 12:07:32 by amiguel-         ###   ########.fr        #
+#    Updated: 2024/02/19 15:55:18 by amiguel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,11 @@ FRAMEWORKS		= -framework OpenGL -framework AppKit
 
 # SOURCE FILES
 SRC_DIR			=	src/
-SRC_FILES		= 	main.c	\
-					init.c
+SRC_FILES		= 	main.c		\
+					init.c		\
+					init_map.c	\
+					detect_path	\
+					check_map.c	
 SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
 # OBJECT FILES
