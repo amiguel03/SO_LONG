@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/20 11:57:53 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:21:58 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@
 # define ERROR_INIT_MSG			"Error creando la info del juego!\n"
 
 /* ****** Defino funciones ****** */
-
-t_game *init_data(char *map_name);
 t_map		*get_map(char *filename);
 void		*delete_map(t_map *map);
 t_map		*check_map(t_map *map);
