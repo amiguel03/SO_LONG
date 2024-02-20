@@ -6,13 +6,13 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:05:53 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/14 15:39:14 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:26:55 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_controler *init_data(char *map_name)
+t_game *init_data(char *map_name)
 {
 	/* TODO: inicializar el mapa */	
 		/* NOTE: cosas que tengo que hacer:

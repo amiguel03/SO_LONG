@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:48:41 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/14 15:39:32 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:54:12 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	print_error(char *msg)
 {
-	write(2, msg, ft_strlen(msg));
+	write(1, msg, ft_strlen(msg));
 	return (1);
 }
 
 int main(int argc, char *argv[])
 {
-	t_controler *ctrl;
+	t_game *ctrl;
 	
 	if (argc != 2)
 		return (print_error(ARGUMENTS_ERROR_MSG));

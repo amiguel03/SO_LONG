@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/19 15:54:00 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:57:53 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+# include "structs.h"
 
 /* ****** Defino las keycode ****** */
 
@@ -42,46 +43,9 @@
 # define ARGUMENTS_ERROR_MSG	"Error de argumentos!\n"
 # define ERROR_INIT_MSG			"Error creando la info del juego!\n"
 
-/* ****** Defino las distintas estructuras ****** */
+/* ****** Defino funciones ****** */
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-typedef struct s_point
-{
-	int x;//coordenada x
-	int y;//coodenada y
-}				t_point;
-
-typedef struct 	s_map {
-	char	**matrix;//mapa guardado en matriz
-	int		row;//fila
-	int		column;//columna
-	int		nconsum;//numero de cconsummibles
-	t_point in;//coordenadas de entrada
-	t_point out;//coordenadas de salida
-}				t_map;
-
-typedef struct	s_character {
-	t_point coords;//coordenadas del personaje
-	int		ncolect;//numero de consumibles que lleva
-}				t_character;
-
-typedef struct	s_win {
- 	void	*mlx;//minilibx
-	void	*win;//ventana que abrimos
-	void	**sprites;//sprites que abrimos
-}				t_win;
-
-typedef struct	s_controler {
- 	t_win		*window;
-	t_map		*map;
-	t_character	*player;
-}				t_controler;
-
-t_controler *init_data(char *map_name);
+t_game *init_data(char *map_name);
 t_map		*get_map(char *filename);
 void		*delete_map(t_map *map);
 t_map		*check_map(t_map *map);
