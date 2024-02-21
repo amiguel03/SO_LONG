@@ -6,9 +6,12 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:56:33 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/20 12:17:23 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:27:00 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
 /* ****** Defino las distintas estructuras ****** */
 
@@ -35,6 +38,7 @@ typedef struct	s_player {
 typedef struct	s_win {
  	void		*mlx;//minilibx
 	void		*win;//ventana que abrimos
+	char		**map;//mapa que abrimos
 	void		**sprites;//sprites que abrimos
 	void		*player_sprite;//sprites del jugador
 	void		*wall_sprite;//sprites del muro
@@ -66,3 +70,5 @@ typedef struct s_images {
 	void		*back;
 	void		*cons;	
 } 				t_images;
+
+#endif

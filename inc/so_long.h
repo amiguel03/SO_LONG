@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/20 12:21:58 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:20:26 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define OUTD_SPT	4
 # define MAP_CH		"01CEPM"
 
+# define IMAGE_HEIGHT 144
+# define IMAGE_WEIGHT 144
+
 # define ARGUMENTS_ERROR_MSG	"Error de argumentos!\n"
 # define ERROR_INIT_MSG			"Error creando la info del juego!\n"
 
@@ -51,5 +54,15 @@ int			set_points(t_map *map);
 int			count_consum(t_map *map);
 int			detect_path(t_map *map);
 int			map_locked(t_map *map);
+int			render(t_win *win);
+int			end_game(t_win *win);
+int			key_hook(int key, t_win *win);
+static int	set_prites(t_win win);
+t_win		*get_win(int columns, int rows);
+static void	set_sprite_pos(t_game *game, int pos);
+void 	move_right(t_game *game);
+void 	move_left(t_game *game);
+void 	move_down(t_game *game);
+void 	move_up(t_game *game);
 
 #endif
