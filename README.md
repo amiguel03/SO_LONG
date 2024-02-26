@@ -1,6 +1,6 @@
 # SO_LONG
 
-/* TODO: inicializar el mapa */	
+	/* TODO: inicializar el mapa */	
 		/* NOTE: cosas que tengo que hacer:
 			-> Guardar el mapa en la matriz (gnl?)
 			-> Guardar las dimensiones (antes de guardar todo el mapa)
