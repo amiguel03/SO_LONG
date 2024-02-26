@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:56:33 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:00 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:45:42 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,41 @@
 
 /* ****** Defino las distintas estructuras ****** */
 
-typedef struct s_point
-{
-	int x;//coordenada x
-	int y;//coodenada y
-}				t_point;
+typedef struct s_point t_point;
+typedef struct s_images t_images;
+typedef struct s_map t_map;
+typedef struct s_player t_player;
+typedef struct s_win t_win;
+typedef struct s_game t_game;
 
-typedef struct 	s_map {
+struct s_point
+{
+	int	x;//coordenada x
+	int	y;//coodenada y
+};				
+
+struct s_map
+{
 	char	**matrix;//mapa guardado en matriz
 	int		row;//fila
 	int		column;//columna
 	int		nconsum;//numero de cconsummibles
-	t_point in;//coordenadas de entrada
-	t_point out;//coordenadas de salida
-}				t_map;
+	t_point	in;//coordenadas de entrada
+	t_point	out;//coordenadas de salida
+};
 
-typedef struct	s_player {
-	t_point coords;//coordenadas del personaje
+struct s_player
+{
+	t_point	coords;//coordenadas del personaje
 	int		ncolect;//numero de consumibles que lleva
-}				t_player;
+};
 
-typedef struct	s_win {
- 	void		*mlx;//minilibx
+struct s_win
+{
+	void		*mlx;//minilibx
 	void		*win;//ventana que abrimos
 	char		**map;//mapa que abrimos
-	void		**sprites;//sprites que abrimos
+	void		**sprites_s;//sprites que abrimos
 	void		*player_sprite;//sprites del jugador
 	void		*wall_sprite;//sprites del muro
 	void		*floor_sprite;//sprites del suelo
@@ -51,24 +61,30 @@ typedef struct	s_win {
 	t_images	*sprites;
 	int			ply_priority;
 	int			ply_frame;
-}				t_win;
+};
 
-typedef struct	s_game {
- 	t_win		*window;
+struct s_game
+{
+	t_win		*win;
 	t_map		*map;
 	t_player	*player;
 	int			steps;
-}				t_game;
+};
 
-typedef struct s_images {
-	void 		*player;
+struct s_images
+{
+	void		*player1;
+	void		*player2;
 	void		*player_up;
 	void		*player_down;
 	void		*player_right;
 	void		*player_left;
-	void		*wall;
-	void		*back;
-	void		*cons;	
-} 				t_images;
+	void		*wall1;
+	void		*wall2;
+	void		*back1;
+	void		*back2;
+	void		*cons1;
+	void		*cons2;
+};
 
 #endif

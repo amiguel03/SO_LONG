@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 11:48:41 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 16:59:28 by amiguel-         ###   ########.fr       */
+/*   Created: 2024/02/26 11:20:09 by amiguel-          #+#    #+#             */
+/*   Updated: 2024/02/26 17:52:04 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	print_error(char *msg)
+void	*delete_player(t_player *player)
 {
-	write(1, msg, ft_strlen(msg));
-	return (1);
+	if (!player)
+		return (NULL);
+	free (player);
+	return (NULL);
 }
 
-int main(int argc, char *argv[])
+t_player	*get_player(t_map *map)
 {
-	t_game *;
-	
-	if (argc != 2)
-		return (print_error(ARGUMENTS_ERROR_MSG));
-	
-	if (ctrl)
-		return (print_error(ERROR_INIT_MSG));
-	
-	return (0);
+	t_player	*player;
+
+	if (!map)
+		return (NULL);
+	player = (t_player *)malloc(sizeof(t_player));
+	if (!player)
+		return (NULL);
+	player->coords.x = map->in.x;
+	player->coords.y = map->in.y;
+	player->ncolect = 0;
+	return (player);
 }

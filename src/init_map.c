@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:19:07 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/16 12:04:48 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:13:22 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static int	get_row(char *filename)
 	row = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return(-1);
+		return (-1);
 	line = get_next_line(fd);
-	while(line)
+	while (line)
 	{
 		free(line);
 		row++;
 		line = get_next_line(fd);
 	}
 	close(fd);
-	return(row);
+	return (row);
 }
 
 static int	get_column(char **map)
@@ -42,7 +42,7 @@ static int	get_column(char **map)
 	i = 0;
 	column = -1;
 	if (!map)
-		return(-1);
+		return (-1);
 	while (map[i])
 	{
 		j = 0;
@@ -51,26 +51,26 @@ static int	get_column(char **map)
 		if (column == -1)
 			column = j;
 		if (column != j)
-			return(-1);
+			return (-1);
 		i++;
 	}
-	return(column);
+	return (column);
 }
 
-static char		**read_map(char *filename)
+static char	**read_map(char *filename)
 {
 	int		fd;
 	int		rows;
 	int		i;
 	char	**map;
-	
+
 	i = 0;
 	rows = get_row(filename);
 	if (rows == -1)
 		return (NULL);
 	map = (char **)malloc((rows + 1) * sizeof(char *));
 	if (!map)
-		return(NULL);
+		return (NULL);
 	fd = open(filename, O_RDONLY);
 	while (i < rows)
 	{
@@ -78,29 +78,29 @@ static char		**read_map(char *filename)
 		i++;
 	}
 	map[i] = NULL;
-	return(map);	
+	return (map);
 }
 
 t_map	*get_map(char *filename)
 {
 	t_map	*map;
-	
+
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)
-		return(NULL);
+		return (NULL);
 	map->row = get_row(filename);
 	map->column = get_column(map->matrix);
 	map->matrix = read_map(filename);
-	return(map);
+	return (map);
 }
 
 void	*delete_map(t_map *map)
 {
 	int		i;
-	
+
 	i = 0;
 	if (!map)
-		return(NULL);
+		return (NULL);
 	if (map->matrix)
 	{
 		while (map->matrix[i])
@@ -108,5 +108,5 @@ void	*delete_map(t_map *map)
 		free(map->matrix);
 	}
 	free(map);
-	return(NULL);
+	return (NULL);
 }

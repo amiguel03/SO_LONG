@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/21 15:20:26 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:41:35 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,21 @@
 # define ARGUMENTS_ERROR_MSG	"Error de argumentos!\n"
 # define ERROR_INIT_MSG			"Error creando la info del juego!\n"
 
-/* ****** Defino funciones ****** */
+# define PLAYER1		"textures/player/.xpm"
+# define PLYER2		"textures/player/.xpm"
+# define PLY_DN			"textures/player/.xpm"
+# define PLY_UP			"textures/player/.xpm"
+# define PLY_LF			"textures/player/.xpm"
+# define PLY_RG			"textures/player/.xpm"
+# define WALL1	"textures/wall/.xpm"
+# define WALL2	"textures/wall/.xpm"
+# define BACK1	"textures/background/.xpm"
+# define BACK2	"textures/background/.xpm"
+# define DOOR_CLOSE		"textures/door/.xpm"
+# define COLL1			"textures/collec/.xpm"
+# define COLL2			"textures/collec/.xpm"
+
+/* ****** Funciones ****** */
 t_map		*get_map(char *filename);
 void		*delete_map(t_map *map);
 t_map		*check_map(t_map *map);
@@ -57,12 +71,27 @@ int			map_locked(t_map *map);
 int			render(t_win *win);
 int			end_game(t_win *win);
 int			key_hook(int key, t_win *win);
-static int	set_prites(t_win win);
+static int	set_sprites(t_win win);
 t_win		*get_win(int columns, int rows);
 static void	set_sprite_pos(t_game *game, int pos);
-void 	move_right(t_game *game);
-void 	move_left(t_game *game);
-void 	move_down(t_game *game);
-void 	move_up(t_game *game);
+void		move_right(t_game *game);
+void		move_left(t_game *game);
+void		move_down(t_game *game);
+void		move_up(t_game *game);
+static void	print_player(t_win *win, int frame);
+void		change_sprites(t_win *win, int frame);
+void		*delete_player(t_player *player);
+t_player	*get_player(t_map *map);
+static int	push_player(t_win *win);
+static int	push_wall(t_win *win);
+static int	push_back(t_win *win);
+static int	push_coll(t_win *win);
+int			push_images(t_win *win);
+static void	print_sprites(t_win *win, int w, int h, void *sprite);
+void		manage_sprites(t_win *win, int x, int y);
+void		*delete_game(t_game *game);
+t_game		*get_game(char *filename);
+void		print_steps(t_game *game);
+void		print_end(t_game *game);
 
 #endif

@@ -6,87 +6,101 @@
 #    By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:25:56 by amiguel-          #+#    #+#              #
-#    Updated: 2024/02/21 15:17:04 by amiguel-         ###   ########.fr        #
+#    Updated: 2024/02/26 17:38:59 by amiguel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # NAME
-NAME = so_long
-
-# LIBRARIES AND FRAMEWORKS
-LIBFT			= libft/libft.a
-MLX				= mlx/libmlx.a #= -Lmlx -lmlx
-FRAMEWORKS		= -framework OpenGL -framework AppKit
-# -Lmlx -lmlx -> La opción -Lmlx especifica dónde encontrar la biblioteca
-# y -lmlx especifica la biblioteca en sí que debe ser enlazada.
-HEADER=structs.h
-# SOURCE FILES
-SRC_DIR			=	src/
-SRC_FILES		= 	main.c		\
-					init.c		\
-					init_map.c	\
-					detect_path	\
+SRC		= 			init_map.c	\
+					detect_path.c	\
 					check_map.c	\
 					init_win.c \
-					movement.c 
-SRC				=	$(addprefix $(SRC_DIR), $(SRC_FILES))
+					movement.c \
+					change_sprites.c \
+					game.c \
+					player.c \
+					print_sprites.c \
+					push_sprits.c \
+					main.c
+SRC_DIR = ./src
+# BONUS = read_map_bonus.c utils_bonus.c so_long_bonus.c check_path_bonus.c \
+# 		print_game_bonus.c e_hooks_bonus.c steps_screen_bonus.c \
+# 		utils2_bonus.c
+#BONUS_DIR = ./src/bonus
+OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
+#BONUS_OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS:.c=.o))
+C = gcc
+#FLAGS = -Wall -Wextra -Werror # -g  # -fsanitize=address
+NAME = so_long
+B_NAME = so_long_bonus
+RM = rm -rf
 
-# OBJECT FILES
-OBJ_DIR			= objs/
-OBJ_FILES 		= $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+#INCLUDE = -lmlx -framework OpenGL -framework AppKit
 
-# COMPILER OPTIONS
-CC		= gcc
-FLAGS	= -Wall -Werror -Wextra -g -O3
-INCLUDE = -I includes
-RM		= rm -rf
+LIBFT_DIR = ./libft/
+LIBFT_A = libft.a
+LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
 
-# COLORS
-RED		=	\033[91;1m
-GREEN	=	\033[92;1m
-YELLOW	=	\033[93;1m
-BLUE	=	\033[94;1m
-PINK	=	\033[95;1m
-CLEAR	=	\033[0m
+MLX_PATH = minilibx_opengl/
+MINILIBX:= -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppKit
 
-# MAKEFILE RULES
-all:	$(NAME)
+GREEN='\033[32m'
+GRAY='\033[2;37m'
+NONE='\033[0m'
 
-$(NAME):	$(OBJ_FILES)
-	@echo "\n$(BLUE)Compiling libft and MinilibX.$(CLEAR)"
-	@make -sC libft
-	@echo "$(GREEN)[libft --> OK]$(CLEAR)"
-	@make -sC mlx
-	@echo "$(GREEN)[MiniLibX --> OK]\n$(CLEAR)"
-	@echo "$(BLUE)Compiling the FDF program.$(CLEAR)"
-	$(CC) $(FLAGS) $(INCLUDE) $(LIBFT) $(MLX) $(FRAMEWORKS) $(OBJ_FILES) -o $(NAME)
-	@echo "$(GREEN)[So_Long --> OK]\n$(CLEAR)$(GREEN)Success!$(CLEAR)\n"
-#@echo "$(PINK)\tUsage: ./fdf <path_map>$(CLEAR)\n"
+all: $(NAME)
+	@echo " \033[36m[ OK ] | READY TO PLAY!\033[0m"
 
+.SILENT: $(OBJS)
+$(NAME): $(OBJS)
+	@echo " \033[33m[ .. ] | Compiling minilibx..\033[0m"
+	@make -C $(MLX_PATH)
+	@echo $(CURSIVE)$(GREEN) " - Making libft..." $(NONE)
+	@sleep 3
+	@make -C $(LIBFT_DIR)
+	@echo $(CURSIVE)$(GREEN) " - Compiling $(NAME)" $(NONE)
+	@gcc $(FLAGS) $(OBJS) $(MINILIBX) $(LIBFT) -o $(NAME)
+	@sleep 3
+	@echo $(CURSIVE)$(GREEN) " - Compiled" $(NONE)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(FLAGS) -c $< -o $@
+B = .
 
+#prueba
+
+.SILENT: $(BONUS_OBJS)
+$(B_NAME): $(BONUS_OBJS)
+	@echo " \033[33m[ .. ] | Compiling minilibx..\033[0m"
+	@make -C $(MLX_PATH)
+	@echo $(CURSIVE)$(GREEN) " - Making libft..." $(NONE)
+	@sleep 3
+	@make bonus -C $(LIBFT_DIR)
+	@echo $(CURSIVE)$(GREEN) " - Compiling $(B_NAME)" $(NONE)
+	@gcc $(FLAGS) $(BONUS_OBJS) $(MINILIBX) $(LIBFT) -o $(B_NAME)
+	@sleep 3
+	@echo $(CURSIVE)$(GREEN) " - Compiled" $(NONE)
+
+#prueba finalizada
+
+bonus: $(B)
+
+$(B): $(B_NAME)
+	
+		
 clean:
-	@echo "$(BLUE)Removing compiled files.$(CLEAR)"
-	@make clean -sC libft
-	@make clean -sC mlx
-	$(RM) $(OBJ_DIR)
-	@echo "$(GREEN)Object files removed correctly\n$(CLEAR)"
-
+	$(RM) $(OBJS) $(BONUS_OBJS) $(LIBFT_A)
+	
 fclean: clean
-	@make fclean -sC libft
-	@echo "$(BLUE)Removing exec. files.$(CLEAR)"
-	$(RM) $(NAME)
-	@echo "$(GREEN)Object files and binary removed correctly\n$(CLEAR)"
+	@echo $(CURSIVE)$(GREEN) " - Removing $(NAME)..." $(NONE)
+	@sleep 1
+	@$(RM) $(NAME) $(B_NAME) $(BONUS_OBJS) $(OBJS)
+	@make -C $(LIBFT_DIR) fclean
+	@echo $(CURSIVE)$(GREEN) " - Clean!" $(NONE)
+	
+re: fclean
+	@sleep 2
+	@echo $(CURSIVE)$(GREEN) " - Compiling again..." $(NONE)
+	@sleep 3
+	@make all
 
-re: fclean all
 
-.PHONY:		all clean fclean re
-
-###########################################################################################
-
-r: run
-run: all
-	./$(NAME)
+.PHONY: all fclean clean re
