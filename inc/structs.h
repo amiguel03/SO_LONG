@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:56:33 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 17:45:42 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:12:15 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,10 @@ struct s_game
 
 struct s_images
 {
-	void		*player1;
-	void		*player2;
-	void		*player_up;
-	void		*player_down;
-	void		*player_right;
-	void		*player_left;
-	void		*wall1;
-	void		*wall2;
-	void		*back1;
-	void		*back2;
-	void		*cons1;
-	void		*cons2;
+	void		*player;
+	void		*wall;
+	void		*back;
+	void		*cons;
 };
 
 #endif

@@ -6,12 +6,15 @@
 #    By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:25:56 by amiguel-          #+#    #+#              #
-#    Updated: 2024/02/26 17:38:59 by amiguel-         ###   ########.fr        #
+#    Updated: 2024/02/27 14:49:17 by amiguel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# NAME
-SRC		= 			init_map.c	\
+NAME = so_long
+FLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+C = gcc
+
+SRC = init_map.c	\
 					detect_path.c	\
 					check_map.c	\
 					init_win.c \
@@ -20,19 +23,16 @@ SRC		= 			init_map.c	\
 					game.c \
 					player.c \
 					print_sprites.c \
-					push_sprits.c \
-					main.c
+					push_sprites.c \
+					main.c 
 SRC_DIR = ./src
-# BONUS = read_map_bonus.c utils_bonus.c so_long_bonus.c check_path_bonus.c \
-# 		print_game_bonus.c e_hooks_bonus.c steps_screen_bonus.c \
-# 		utils2_bonus.c
+#BONUS = read_map_bonus.c utils_bonus.c so_long_bonus.c check_path_bonus.c \
+#		print_game_bonus.c e_hooks_bonus.c steps_screen_bonus.c \
+#		utils2_bonus.c
 #BONUS_DIR = ./src/bonus
 OBJS = $(addprefix $(SRC_DIR)/, $(SRC:.c=.o))
 #BONUS_OBJS = $(addprefix $(BONUS_DIR)/, $(BONUS:.c=.o))
-C = gcc
-#FLAGS = -Wall -Wextra -Werror # -g  # -fsanitize=address
-NAME = so_long
-B_NAME = so_long_bonus
+#B_NAME = so_long_bonus
 RM = rm -rf
 
 #INCLUDE = -lmlx -framework OpenGL -framework AppKit
@@ -41,7 +41,7 @@ LIBFT_DIR = ./libft/
 LIBFT_A = libft.a
 LIBFT = -L$(LIBFT_DIR) $(LIBFT_DIR)$(LIBFT_A)
 
-MLX_PATH = minilibx_opengl/
+MLX_PATH = mlx/
 MINILIBX:= -L $(MLX_PATH) $(MLX_PATH)libmlx.a -lmlx -framework OpenGL -framework AppKit
 
 GREEN='\033[32m'
@@ -88,14 +88,12 @@ $(B): $(B_NAME)
 		
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS) $(LIBFT_A)
-	
 fclean: clean
 	@echo $(CURSIVE)$(GREEN) " - Removing $(NAME)..." $(NONE)
 	@sleep 1
 	@$(RM) $(NAME) $(B_NAME) $(BONUS_OBJS) $(OBJS)
 	@make -C $(LIBFT_DIR) fclean
 	@echo $(CURSIVE)$(GREEN) " - Clean!" $(NONE)
-	
 re: fclean
 	@sleep 2
 	@echo $(CURSIVE)$(GREEN) " - Compiling again..." $(NONE)

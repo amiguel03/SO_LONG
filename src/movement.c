@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:14:04 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 17:48:49 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:16:27 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ static void	set_sprite_pos(t_game *game, int pos)
 	t_images	*sprites;
 
 	sprites = game->win->sprites;
-	if (pos == 0)
-		game->win->player_sprite = sprites->player_up;
-	else if (pos == 1)
-		game->win->player_sprite = sprites->player_right;
-	else if (pos == 2)
-		game->win->player_sprite = sprites->player_left;
-	else
-		game->win->player_sprite = sprites->player_down;
 	game->win->ply_priority = 1;
 	game->win->ply_frame = 0;
 }

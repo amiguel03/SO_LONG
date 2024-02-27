@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:03:10 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 17:38:01 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:06:48 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static int	detect_path_rec(char **map, int x, int y, t_map *data)
 		return (1);
 	else
 		map[y][x] = 1;
-	if (x - 1 >= 0 && map[y][x - 1] != '1' && map[y][x - 1] != 'M')
+	if (x - 1 >= 0 && map[y][x - 1] != '1')
 		count += detect_path_rec(map, x - 1, y, data);
-	if (x + 1 < x_max && map[y][x + 1] != '1' && map[y][x + 1] != 'M')
+	if (x + 1 < x_max && map[y][x + 1] != '1')
 		count += detect_path_rec(map, x + 1, y, data);
-	if (y - 1 >= 0 && map[y - 1][x] != '1' && map[y - 1][x] != 'M')
+	if (y - 1 >= 0 && map[y - 1][x] != '1')
 		count += detect_path_rec(map, x, y - 1, data);
-	if (y + 1 < y && map[y + 1][x] != '1' && map[y + 1][x] != 'M')
+	if (y + 1 < y && map[y + 1][x] != '1')
 		count += detect_path_rec(map, x, y + 1, data);
 	return (count);
 }

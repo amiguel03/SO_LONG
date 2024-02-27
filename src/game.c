@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 15:24:54 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 17:49:33 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:31:30 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ t_game	*get_game(char *filename)
 
 	if (!filename)
 		return (NULL);
-	game = (t_game *) malloc(sizeof(t_game));
+	game = (t_game *)malloc(sizeof(t_game) * 1);
 	if (!game)
 		return (NULL);
-	game->map = get_map(filename);
+	game->map = get_map(filename, game);
 	if (!(game->map))
 	{
 		write(1, "Error. Error reading the map\n", 30);

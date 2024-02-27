@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   apuntes_mlx.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:32:01 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/13 15:06:41 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:55:13 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../inc/so_long.h"
-
-int	key_hook(int keycode, t_vars *vars)
-{
-	(void)vars;
-	printf("Hello from key_hook! --> %d\n", keycode);
-	return (0);
-}
 
 int	main(void)
 {
@@ -25,7 +18,7 @@ int	main(void)
 	/*void	*win; // Ventana del juego que se abre*/
 	void	*sprite; // La imagen que colocas en la ventana
 	t_vars	vars;
-	char	*relative_path = "./textures/algo.xpm";
+	char	*relative_path = "./textures/background/back.xpm";
 	int		img_width;
 	int		img_height;
 

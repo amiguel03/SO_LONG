@@ -6,77 +6,69 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 14:15:52 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 14:49:46 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:30:57 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	push_player(t_win *win)
+static void	*push_player(t_win *win)
 {
 	int		w;
 	int		h;
-	void	*mlx
+	void	*mlx;
 
 	w = 244;
 	h = 244;
 	mlx = win->mlx;
-	win->sprites->player1 = mlx_xpm_file_to_image(mlx, PLAYER1, &w, &h);
-	win->sprites->player2 = mlx_xpm_file_to_image(mlx, PLAYER2, &w, &h);
-	win->sprites->player_down = mlx_xpm_file_to_image(mlx, PLY_DN, &w, &h);
-	win->sprites->player_up = mlx_xpm_file_to_image(mlx, PLY_UP, &w, &h);
-	win->sprites->player_left = mlx_xpm_file_to_image(mlx, PLY_LF, &w, &h);
-	win->sprites->player_right = mlx_xpm_file_to_image(mlx, PLY_RG, &w, &h);
-	return (win->sprites->player1 && win->sprites->player2);
+	win->sprites->player = mlx_xpm_file_to_image(mlx, PLAYER, &w, &h);
+	return (win->sprites->player);
 }
 
-static int	push_wall(t_win *win)
+static void	*push_wall(t_win *win)
 {
 	int		w;
 	int		h;
-	void	*mlx
+	void	*mlx;
 
 	w = IMAGE_WEIGHT;
 	h = IMAGE_HEIGHT;
 	mlx = win->mlx;
-	win->sprites->wall1 = mlx_xpm_file_to_image(mlx, WALL1, &w, &h);
-	win->sprites->wall2 = mlx_xpm_file_to_image(mlx, WALL2, &w, &h);
-	return (win->sprites->wall1 && win->sprites->wall2);
+	win->sprites->wall = mlx_xpm_file_to_image(mlx, WALL, &w, &h);
+	return (win->sprites->wall);
 }
 
-static int	push_back(t_win *win)
+static void	*push_back(t_win *win)
 {
 	int		w;
 	int		h;
-	void	*mlx
+	void	*mlx;
 
 	w = IMAGE_WEIGHT;
 	h = IMAGE_HEIGHT;
 	mlx = win->mlx;
-	win->sprites->back1 = mlx_xpm_file_to_image(mlx, BACK1, &w, &h);
-	win->sprites->back2 = mlx_xpm_file_to_image(mlx, BACK2, &w, &h);
-	return (win->sprites->back1 && win->sprites->back2);
+	win->sprites->back = mlx_xpm_file_to_image(mlx, BACK, &w, &h);
+	return (win->sprites->back);
 }
 
-static int	push_coll(t_win *win)
+static void	*push_coll(t_win *win)
 {
 	int		w;
 	int		h;
-	void	*mlx
+	void	*mlx;
 
 	w = IMAGE_WEIGHT;
 	h = IMAGE_HEIGHT;
 	mlx = win->mlx;
-	win->sprites->coll1 = mlx_xpm_file_to_image(mlx, COLL1, &w, &h);
-	win->sprites->coll2 = mlx_xpm_file_to_image(mlx, COLL2, &w, &h);
-	return (win->sprites->coll1 && win->sprites->coll2);
+	win->sprites->cons = mlx_xpm_file_to_image(mlx, COLL, &w, &h);
+	return (win->sprites->cons);
 }
 
-int	push_images(t_win *win)
+void	*push_images(t_win *win)
 {
 	int		w;
 	int		h;
-	void	*mlx
+	void	*mlx;
 
 	w = IMAGE_WEIGHT;
 	h = IMAGE_HEIGHT;

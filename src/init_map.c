@@ -6,11 +6,69 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:19:07 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 12:13:22 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:30:32 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+
+
+
+
+
+
+void	prueba(char *filename, t_game *game)
+{
+	int		fd;
+	int column;
+	char	*line;
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		exit(EXIT_FAILURE);
+	line = get_next_line(fd);
+	printf("Buenas %s\n", line);
+	column = ft_strlen(line);
+	printf("Columna %d\n", column);
+	free(line);
+	game->map->row = 1;
+	printf("Buenas\n");
+	while (line)
+	{
+		free(line);
+		game->map->row++;
+		line = get_next_line(fd);
+	}
+	printf("Row: %d\n", game->map->row);
+	printf("Column: %d\n", game->map->column);
+	close(fd);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 static int	get_row(char *filename)
 {
@@ -49,7 +107,7 @@ static int	get_column(char **map)
 		while (map[i][j])
 			j++;
 		if (column == -1)
-			column = j;
+			column = i;
 		if (column != j)
 			return (-1);
 		i++;

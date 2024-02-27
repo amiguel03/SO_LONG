@@ -6,27 +6,49 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:48:41 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 16:59:28 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:33:15 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	print_error(char *msg)
+void	leaks(void)
 {
-	write(1, msg, ft_strlen(msg));
-	return (1);
+	system("leaks -q so_long");
 }
 
-int main(int argc, char *argv[])
+int	check_extension(char *filename)
 {
-	t_game *;
-	
-	if (argc != 2)
-		return (print_error(ARGUMENTS_ERROR_MSG));
-	
-	if (ctrl)
-		return (print_error(ERROR_INIT_MSG));
-	
+	int	length;
+
+	length = ft_strlen(filename);
+	if (filename[length - 1] == 'r' && \
+		filename[length - 2] == 'e' && \
+		filename[length - 3] == 'b' && \
+		filename[length - 4] == '.')
+		return (1);
 	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_game	*game;
+
+	// atexit(leaks);
+	if (argc != 2 || !check_extension(argv[1]))
+		return (write(1, "Usage: ./so_long <map_file>.ber\n", 33));
+
+
+
+	printf("HELLO\n");
+	prueba(argv[1], game);
+	printf("HELLO2\n");
+
+
+	
+	game = get_game(argv[1]);
+	if (!game)
+		return (1);
+	mlx_loop(game->win->mlx);
+	exit(0);
 }
