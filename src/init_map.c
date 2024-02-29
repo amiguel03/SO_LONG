@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:19:07 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/27 15:30:32 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/29 15:24:41 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,32 @@
 
 
 
-void	prueba(char *filename, t_game *game)
-{
-	int		fd;
-	int column;
-	char	*line;
+// void	prueba(char *filename, t_game *game)
+// {
+// 	int		fd;
+// 	int column;
+// 	char	*line;
 
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		exit(EXIT_FAILURE);
-	line = get_next_line(fd);
-	printf("Buenas %s\n", line);
-	column = ft_strlen(line);
-	printf("Columna %d\n", column);
-	free(line);
-	game->map->row = 1;
-	printf("Buenas\n");
-	while (line)
-	{
-		free(line);
-		game->map->row++;
-		line = get_next_line(fd);
-	}
-	printf("Row: %d\n", game->map->row);
-	printf("Column: %d\n", game->map->column);
-	close(fd);
-}
+// 	fd = open(filename, O_RDONLY);
+// 	if (fd < 0)
+// 		exit(EXIT_FAILURE);
+// 	line = get_next_line(fd);
+// 	printf("Buenas %s\n", line);
+// 	column = ft_strlen(line);
+// 	printf("Columna %d\n", column);
+// 	free(line);
+// 	game->map->row = 1;
+// 	printf("Buenas\n");
+// 	while (line)
+// 	{
+// 		free(line);
+// 		game->map->row++;
+// 		line = get_next_line(fd);
+// 	}
+// 	printf("Row: %d\n", game->map->row);
+// 	printf("Column: %d\n", game->map->column);
+// 	close(fd);
+// }
 
 
 
@@ -101,8 +101,11 @@ static int	get_column(char **map)
 	column = -1;
 	if (!map)
 		return (-1);
+	printf("> [%p]\n", map);
+	printf("> [%p]\n", map[0]);
 	while (map[i])
 	{
+		printf("==> Line: [%s]\n", map[i]);
 		j = 0;
 		while (map[i][j])
 			j++;
@@ -147,8 +150,8 @@ t_map	*get_map(char *filename)
 	if (!map)
 		return (NULL);
 	map->row = get_row(filename);
-	map->column = get_column(map->matrix);
 	map->matrix = read_map(filename);
+	map->column = get_column(map->matrix);
 	return (map);
 }
 

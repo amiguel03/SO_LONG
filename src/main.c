@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:48:41 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/27 15:33:15 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:27:32 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,13 @@ int	main(int argc, char *argv[])
 {
 	t_game	*game;
 
-	// atexit(leaks);
+	atexit(leaks);
 	if (argc != 2 || !check_extension(argv[1]))
 		return (write(1, "Usage: ./so_long <map_file>.ber\n", 33));
-
-
-
-	printf("HELLO\n");
-	prueba(argv[1], game);
-	printf("HELLO2\n");
-
-
-	
 	game = get_game(argv[1]);
 	if (!game)
 		return (1);
+	printf("[ OK ]Juego iniciado %s\n", game->win->mlx);
 	mlx_loop(game->win->mlx);
 	exit(0);
 }

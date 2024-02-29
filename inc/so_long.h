@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/27 15:30:37 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:02:11 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define WALL			"textures/wall/wall.xpm"
 # define BACK			"textures/background/back.xpm"
 # define DOOR_CLOSE		"textures/door/door.xpm"
-# define COLL			"textures/collec/coll.xpm"
+# define COLL			"textures/consum/coll.xpm"
 
 /* ****** Funciones ****** */
 t_map		*get_map(char *filename);
@@ -63,7 +63,6 @@ int			map_locked(t_map *map);
 int			render(t_win *win);
 int			end_game(t_win *win);
 int			key_hook(int key, t_win *win);
-static int	set_sprites(t_win win);
 t_win		*get_win(int columns, int rows);
 static void	set_sprite_pos(t_game *game, int pos);
 void		move_right(t_game *game);
@@ -93,7 +92,7 @@ void		print_end(t_game *game);
 
 
 
-void	prueba(char *filename, t_game *game);
+// void	prueba(char *filename, t_game *game);
 
 
 

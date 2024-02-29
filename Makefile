@@ -6,12 +6,12 @@
 #    By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/13 10:25:56 by amiguel-          #+#    #+#              #
-#    Updated: 2024/02/27 14:49:17 by amiguel-         ###   ########.fr        #
+#    Updated: 2024/02/29 16:19:22 by amiguel-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-FLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g3 # -fsanitize=address
 C = gcc
 
 SRC = init_map.c	\
@@ -56,11 +56,11 @@ $(NAME): $(OBJS)
 	@echo " \033[33m[ .. ] | Compiling minilibx..\033[0m"
 	@make -C $(MLX_PATH)
 	@echo $(CURSIVE)$(GREEN) " - Making libft..." $(NONE)
-	@sleep 3
+# @sleep 3
 	@make -C $(LIBFT_DIR)
 	@echo $(CURSIVE)$(GREEN) " - Compiling $(NAME)" $(NONE)
 	@gcc $(FLAGS) $(OBJS) $(MINILIBX) $(LIBFT) -o $(NAME)
-	@sleep 3
+# @sleep 3
 	@echo $(CURSIVE)$(GREEN) " - Compiled" $(NONE)
 
 B = .
