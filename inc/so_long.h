@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 15:02:57 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/29 16:02:11 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:44:52 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@
 # define MAP_CH		"01CEP"
 
 # define IMAGE_HEIGHT 144
-# define IMAGE_WEIGHT 144
-
-# define ARGUMENTS_ERROR_MSG	"Error de argumentos!\n"
-# define ERROR_INIT_MSG			"Error creando la info del juego!\n"
+# define IMAGE_WIDTH 144
 
 # define PLAYER			"textures/player/player.xpm"
 # define WALL			"textures/wall/wall.xpm"
@@ -64,35 +61,29 @@ int			render(t_win *win);
 int			end_game(t_win *win);
 int			key_hook(int key, t_win *win);
 t_win		*get_win(int columns, int rows);
-static void	set_sprite_pos(t_game *game, int pos);
+// static void	set_sprite_pos(t_game *game, int pos);
 void		move_right(t_game *game);
 void		move_left(t_game *game);
 void		move_down(t_game *game);
 void		move_up(t_game *game);
-static void	print_player(t_win *win, int frame);
+//static void	print_player(t_win *win, int frame);
 void		change_sprites(t_win *win, int frame);
 void		*delete_player(t_player *player);
 t_player	*get_player(t_map *map);
-static void	*push_player(t_win *win);
-static void	*push_wall(t_win *win);
-static void	*push_back(t_win *win);
-static void	*push_coll(t_win *win);
+//static void	*push_player(t_win *win);
+// static void	*push_wall(t_win *win);
+// static void	*push_back(t_win *win);
+// static void	*push_coll(t_win *win);
 void		*push_images(t_win *win);
-static void	print_sprites(t_win *win, int w, int h, void *sprite);
+// static/ void	print_sprites(t_win *win, int w, int h, void *sprite);
 void		manage_sprites(t_win *win, int x, int y);
 void		*delete_game(t_game *game);
 t_game		*get_game(char *filename);
 void		print_steps(t_game *game);
 void		print_end(t_game *game);
-
-
-
-
-
-
-
-
-// void	prueba(char *filename, t_game *game);
+void		leaks(void);
+int			check_extension(char *filename);
+int			main(int argc, char *argv[]);
 
 
 

@@ -6,69 +6,11 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 12:19:07 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/29 15:24:41 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:58:13 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-
-
-
-
-
-
-// void	prueba(char *filename, t_game *game)
-// {
-// 	int		fd;
-// 	int column;
-// 	char	*line;
-
-// 	fd = open(filename, O_RDONLY);
-// 	if (fd < 0)
-// 		exit(EXIT_FAILURE);
-// 	line = get_next_line(fd);
-// 	printf("Buenas %s\n", line);
-// 	column = ft_strlen(line);
-// 	printf("Columna %d\n", column);
-// 	free(line);
-// 	game->map->row = 1;
-// 	printf("Buenas\n");
-// 	while (line)
-// 	{
-// 		free(line);
-// 		game->map->row++;
-// 		line = get_next_line(fd);
-// 	}
-// 	printf("Row: %d\n", game->map->row);
-// 	printf("Column: %d\n", game->map->column);
-// 	close(fd);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 static int	get_row(char *filename)
 {
@@ -81,41 +23,44 @@ static int	get_row(char *filename)
 	if (fd < 0)
 		return (-1);
 	line = get_next_line(fd);
-	while (line)
+	while (line != NULL)
 	{
-		free(line);
 		row++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
+	free(line);
 	return (row);
 }
 
 static int	get_column(char **map)
 {
-	int		column;
 	int		j;
 	int		i;
+	int		length;
 
 	i = 0;
-	column = -1;
+	length = 0;
 	if (!map)
 		return (-1);
-	printf("> [%p]\n", map);
-	printf("> [%p]\n", map[0]);
 	while (map[i])
 	{
-		printf("==> Line: [%s]\n", map[i]);
 		j = 0;
 		while (map[i][j])
 			j++;
-		if (column == -1)
-			column = i;
-		if (column != j)
-			return (-1);
+		if (length == 0)
+			length = j;
+		else
+		{
+			if (length != j)
+				return (-1);
+		}
 		i++;
 	}
-	return (column);
+	if (j < 0)
+		exit (EXIT_FAILURE);
+	return (j);
 }
 
 static char	**read_map(char *filename)
@@ -136,6 +81,8 @@ static char	**read_map(char *filename)
 	while (i < rows)
 	{
 		map[i] = get_next_line(fd);
+		if (i != rows - 1)
+			map[i][ft_strlen(map[i]) - 1] = '\0';
 		i++;
 	}
 	map[i] = NULL;

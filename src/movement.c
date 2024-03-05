@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:14:04 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/27 12:16:27 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:07:30 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	set_sprite_pos(t_game *game, int pos)
 {
 	t_images	*sprites;
+	(void)pos;
 
 	sprites = game->win->sprites;
 	game->win->ply_priority = 1;
@@ -35,10 +36,6 @@ void	move_right(t_game *game)
 	if (game->map->matrix[y][x + 1] == 'E' && \
 	game->player->ncolect != game->player->ncolect)
 		return ;
-	if ((game->map->matrix[y][x + 1] == 'E' && \
-	game->player->ncolect == game->map->nconsum) || \
-	game->map->matrix[y][x + 1] == 'M')
-		end_game (game->win);
 	game->map->matrix[y][x] = '0';
 	if (game->map->matrix[y][x + 1] == 'C')
 		(game->player->ncolect)++;
@@ -63,10 +60,6 @@ void	move_left(t_game *game)
 	if (game->map->matrix[y][x - 1] == 'E' && \
 	game->player->ncolect != game->player->ncolect)
 		return ;
-	if ((game->map->matrix[y][x - 1] == 'E' && \
-	game->player->ncolect == game->map->nconsum) || \
-	game->map->matrix[y][x - 1] == 'M')
-		end_game (game->win);
 	game->map->matrix[y][x] = '0';
 	if (game->map->matrix[y][x - 1] == 'C')
 		(game->player->ncolect)++;
@@ -84,17 +77,13 @@ void	move_down(t_game *game)
 
 	x = game->player->coords.x;
 	y = game->player->coords.y;
-	if (y + 1 == game->map->column)
+	if (y + 1 == game->map->row)
 		return ;
 	if (game->map->matrix[y + 1][x] == '1')
 		return ;
 	if (game->map->matrix[y + 1][x] == 'E' && \
 	game->player->ncolect != game->player->ncolect)
 		return ;
-	if ((game->map->matrix[y + 1][x] == 'E' && \
-	game->player->ncolect == game->map->nconsum) || \
-	game->map->matrix[y + 1][x] == 'M')
-		end_game (game->win);
 	game->map->matrix[y][x] = '0';
 	if (game->map->matrix[y + 1][x] == 'C')
 		(game->player->ncolect)++;
@@ -112,17 +101,13 @@ void	move_up(t_game *game)
 
 	x = game->player->coords.x;
 	y = game->player->coords.y;
-	if (y - 1 == game->map->column)
+	if (y - 1 == game->map->row)
 		return ;
 	if (game->map->matrix[y - 1][x] == '1')
 		return ;
 	if (game->map->matrix[y - 1][x] == 'E' && \
 	game->player->ncolect != game->player->ncolect)
 		return ;
-	if ((game->map->matrix[y - 1][x] == 'E' && \
-	game->player->ncolect == game->map->nconsum) || \
-	game->map->matrix[y - 1][x] == 'M')
-		end_game (game->win);
 	game->map->matrix[y][x] = '0';
 	if (game->map->matrix[y - 1][x] == 'C')
 		(game->player->ncolect)++;

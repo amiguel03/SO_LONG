@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:03:10 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/27 12:06:48 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:48:41 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	detect_path(t_map *map)
 	int		res;
 
 	y = 0;
-	map_copy = (char **)malloc((map->row +1) * sizeof(char *));
+	map_copy = (char **)malloc((map->row + 1) * sizeof(char *));
 	if (!map_copy)
 		return (0);
 	while (map->matrix[y])
@@ -102,7 +102,7 @@ int	map_locked(t_map *map)
 				return (0);
 			x++;
 		}
-		if (map->matrix[y][x -1] != 1)
+		if (map->matrix[y][x - 1] != 1)
 			return (0);
 		y++;
 	}

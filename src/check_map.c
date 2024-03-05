@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:12:45 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/26 12:06:47 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:45:29 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	set_in(t_map *map, int *start, int x, int y)
 	if (start != 0)
 		return (1);
 	map->in.x = x;
-	map->in.x = y;
+	map->in.y = y;
 	*start = 1;
 	return (0);
 }
@@ -53,7 +53,7 @@ static int	set_out(t_map *map, int *end, int x, int y)
 	if (end != 0)
 		return (1);
 	map->out.x = x;
-	map->out.x = y;
+	map->out.y = y;
 	*end = 1;
 	return (0);
 }

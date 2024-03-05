@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:48:41 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/29 16:27:32 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:45:23 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char *argv[])
 	game = get_game(argv[1]);
 	if (!game)
 		return (1);
-	printf("[ OK ]Juego iniciado %s\n", game->win->mlx);
 	mlx_loop(game->win->mlx);
 	exit(0);
 }

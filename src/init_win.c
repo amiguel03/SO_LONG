@@ -6,7 +6,7 @@
 /*   By: amiguel- <amiguel-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:07:12 by amiguel-          #+#    #+#             */
-/*   Updated: 2024/02/29 16:20:50 by amiguel-         ###   ########.fr       */
+/*   Updated: 2024/03/05 11:48:59 by amiguel-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	set_sprites(t_win *win)
 	int		h;
 	void	*mlx;
 
-	w = IMAGE_WEIGHT;
+	w = IMAGE_WIDTH;
 	h = IMAGE_HEIGHT;
 	mlx = win->mlx;
 	if (!push_images(win))
@@ -81,17 +81,17 @@ static int	set_sprites(t_win *win)
 t_win	*get_win(int columns, int rows)
 {
 	t_win	*win;
-	int		weight;
+	int		width;
 	int		height;
 
-	weight = IMAGE_WEIGHT * columns;
+	width = IMAGE_WIDTH * columns;
 	height = IMAGE_HEIGHT * rows;
 	win = (t_win *)malloc(sizeof(t_win));
 	if (!win)
 		return (NULL);
 	win->mlx = mlx_init();
 	win->sprites = (t_images *) malloc(sizeof(t_images));
-	win->win = mlx_new_window(win->mlx, weight, height, "so long!");
+	win->win = mlx_new_window(win->mlx, width, height, "so long!");
 	if (!win->sprites || !set_sprites(win))
 	{
 		write(1, "Error\n", 6);
